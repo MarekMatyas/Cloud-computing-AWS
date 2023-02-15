@@ -173,7 +173,7 @@ After these steps are done we import the IP address into our browser to check th
 
 If everything is up to date so far we come back to our GitBash and exit our machine `exit`.
 
-We need to make sure we are in the .ssh folder and copy the code from AWS in the example section `ssh -i "devops-tech201.pem" ubuntu....`
+
 
 
 
