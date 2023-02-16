@@ -179,7 +179,7 @@ If everything is up to date so far we come back to our GitBash and exit our mach
 
 **Note**- to connect to any instance we will need to copy the code from example section in AWS and paste in the GitBash local host. 
 
-***If we would like to migrate file onto our EC2 instance:***
+### ***If we would like to migrate file onto our EC2 instance:***
 
 - First we have to navigate into our secure shell folder we created previously `cd .ssh`
 
