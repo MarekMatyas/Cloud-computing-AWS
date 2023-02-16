@@ -251,3 +251,32 @@ And lastly we run our app : `node app.js`
 
 
 
+
+
+--- 
+
+## Creating a 2tier architecture
+
+![](diagram.jpg)
+
+
+In this architecture we can see that the environments are independent and in case we encounter a problem there will be no downtime of the services. If problem occurs the user should never be affected and should be redirected to a page that contains information such as: **Apologies for the incovenience, the site will be up again shortly** 
+
+The reason why it is beneficial to refactor the monolith architecture to 2tier architercture is that the monolith architecture makes development slower and it is not **scalable**.
+
+**Reliability** - If there is an error in any module, it could affect the entire applicationt's availability. 
+
+**2-tier architecture** mitigates all of these issues. 
+
+---
+
+The availability zones or **AZ's** refer to the distinct locations within an AWS region that are engineered to be isolated from failures in other AZ's.
+
+To achieve low latency we have to make sure that the AZ's that we choose for the use is the closest one possible. 
+
+### **Note** 
+Each region is completely independent.  
+
+
+
+
