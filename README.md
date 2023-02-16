@@ -316,7 +316,7 @@ Env var set up
 
 
 
-## Creating another instance DB
+## Creating 2nd 2tier instance (database)
 
 
 ![](2tier_diagram.png)
@@ -365,6 +365,42 @@ This way, the other users will see the etc directory, but will not be able to ch
 We check the status `sudo systemctl status mongod`
 
 ![](mongo_status.png)
+
+
+changed mongod.conf using `cd /etc` and change bindIP to 0.0.0.0 to be public
+
+restart and enable mongod.
+
+
+We will have to change the configuration of the `mongod.conf` but first we need to use `cd /etc` following with `sudo nano mongod.conf` and change the bindIP to `0.0.0.0` for it to be public and make sure the port is correct too. This is not a good practice for production environment. 
+
+To check the changes `cat mongod.conf` and check the status `sudo systemctl status mongod`
+
+If the mongod status is active we will have to ssh into our app instance.
+
+Navigate to the correct folder where `app` is located with the correct files. 
+
+Next we will have to create an environment variable with the db IP for connection.
+
+`export DB_HOST=mongodb://db_instance_IP/posts`
+
+To check if it has been created `printenv +name_of_the_variable`
+
+Then we use command `npm install` and `npm start`
+
+`npm install` is used used for installing the dependencies in the project.`
+
+`npm start` is used to execute the command specified scripts.
+
+If the data base hasn't been seeded you will have to run `node seeds/seed.sj` to populate the database with the posts. 
+
+Lastly, we run `npm start` again and our app should be ready and listening on the port specified.
+
+If the reverse proxy is set up we will not need the port number, otherwise we will need to specify the port. 
+
+![](posts.png)
+
+
 
 
 
