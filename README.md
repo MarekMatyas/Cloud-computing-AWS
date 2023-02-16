@@ -75,7 +75,10 @@ They may be free or sold on-demand, allowing customers to pay only per usage for
 
 
 
-# How to set up tier2
+# How to set up tier2 architecture
+
+
+![](2tier_architecture.png)
 
 First we need to create .ssh folder 
 
@@ -97,6 +100,7 @@ We have to download the key `.pem` and we move the content to the `.ssh` folder.
 `nano devops-tech201.pem` to enter the file and we copy paste the content of the key file - `ctrl+x`
 
 To double check `cat devops-tech201.pem` shows the content we pasted.
+
 
 **AWS**
 
@@ -158,9 +162,9 @@ In the .ssh folder we run `chmod 400 devops-tech201.pem` (which is the name of t
 
 To check the premissions we run `ll`
 
-Go back to AWS and copy the example code(confirming that I am the person that you provided the key to)
+Go back to AWS and copy the example code(confirming that I am the person that you provided the key to) 
 
-copy that into GitBash
+copy that into GitBash to `ssh` into the EC2 instance.
 
 After that we need to update and install the nginx
 
@@ -173,9 +177,9 @@ After these steps are done we import the IP address into our browser to check th
 
 If everything is up to date so far we come back to our GitBash and exit our machine `exit`.
 
-Note- to connect to any instance we will need to copy the code from example section in AWS and paste in the GitBash local host. 
+**Note**- to connect to any instance we will need to copy the code from example section in AWS and paste in the GitBash local host. 
 
-If we would like to migrate file onto our EC2 instance:
+***If we would like to migrate file onto our EC2 instance:***
 
 - First we have to navigate into our secure shell folder we created previously `cd .ssh`
 
@@ -191,7 +195,7 @@ Then we follow with the path of the folder we want to migrate.
 
  The last part specifies the code that we use to ssh into our global machine.
 
- Note: The GitBash will not like backslash so use forward slash. 
+ **Note**: The GitBash will not like backslash so use forward slash. 
 
  After we will have to connect to our global machine
  using the command provided on AWS
@@ -205,7 +209,7 @@ Then we need to make sure we navigate into the app folder `cd app` and use `ls` 
 We can check that the app is working on the browser with the port. 
 
 
-To implement the reverse proxy we will have to change the default configuration of nginx file 
+### To implement the reverse proxy we will have to change the default configuration of nginx file 
 
 ```
 sudo nano /etc/nginx/sites-available/default
