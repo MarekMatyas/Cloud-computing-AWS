@@ -279,4 +279,93 @@ Each region is completely independent.
 
 
 
+**Security rules of app**
+- Subnet setting- Default 1a to make sure its public subnet
+
+- Auto-assing public IP - Enable
+
+- Security group name- your_name-tech201-app
+
+- Same for the description + required ports 3000-80-
+
+1. type- ssh
+source type - My IP
+
+2. type- HTTP
+source type - Anywhere
+
+To add another rule because we need to add the port 3000
+
+3. port range - 3000
+Source type - Anywhere
+Type- Custom TCP
+
+
+
+Security rules for DB
+
+- We need to allow 27017 port from anywhere
+- Only allow it from app instance 
+
+Mongodb.conf rules
+- Change confguration of mongod.conf to 0.0.0.0
+
+
+Env var set up 
+
+
+
+
+## Creating another instance DB
+
+
+![](2tier_diagram.png)
+
+First we need to create an instance on AWS website with the appropriate name in our case ending with "db" for database. 
+
+Security settings:
+
+- Default vpc
+- Subnet: Default 1a
+- Auto-assing public IP: Enable
+
+Firewall:
+
+Security rule 1.: 
+- Type: SSH, Protocol: TCP, Port range: 22
+- Source type: My IP
+
+Security rule 2.:
+Type: Custom TCP, Port range: 27017
+Source type: Anywhere
+
+After we create an instance we to out GitBash terminal and make sure we are in the .ssh folder. 
+
+We `ssh` into out db machine using the code in the example section after connect to the instance on AWS. 
+
+- First we need to run `sudo apt-get update -y` to get the necessary updates and to establish the connection to the internet.
+
+- We will have to migrate the db provision.sh script
+
+- There are multiple ways to do that, in this case we used our repository from GitHub where the provision.sh script for db is located using `git clone + URL from the repository`
+
+- When we have this imported, we have to navigate to the correct folder where the provision.sh file is with the script. (`ls`, `cd`)
+
+- When we are in the correct folder we have to make sure that the script is correct `sudo nano provision.sh` and comment out the configuration for mongod for it not to be automatically configured.
+
+`sudo ./provision.sh` to run the file.
+
+We change permissions of the file `chmod 700 provision.sh`
+This way, the other users will see the etc directory, but will not be able to change into it
+
+
+` sudo systemctl restart mongod`
+`sudo systemctl enable mongod`
+
+We check the status `sudo systemctl status mongod`
+
+![](mongo_status.png)
+
+
+
 
