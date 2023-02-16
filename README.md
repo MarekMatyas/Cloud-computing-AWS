@@ -75,7 +75,7 @@ They may be free or sold on-demand, allowing customers to pay only per usage for
 
 
 
-# How to set up VM through AWS
+# How to set up tier2
 
 First we need to create .ssh folder 
 
@@ -173,11 +173,72 @@ After these steps are done we import the IP address into our browser to check th
 
 If everything is up to date so far we come back to our GitBash and exit our machine `exit`.
 
+Note- to connect to any instance we will need to copy the code from example section in AWS and paste in the GitBash local host. 
+
+If we would like to migrate file onto our EC2 instance:
+
+- First we have to navigate into our secure shell folder we created previously `cd .ssh`
+
+- The way we can copy certain file over to global is using `scp` (Secure Copy Protocol). 
+
+```
+scp -i devops-tech201.pem -r /c/Users/matya/Documents/'Tech201- Virualization'/Virtualization/tech201_virtualization/app ubuntu@ec2-3-248-196-21.eu-west-1.compute.amazonaws.com:/home/ubuntu
+
+```
+"devops-tech201.pem" is the file that is containing the content of a generated key.
+
+Then we follow with the path of the folder we want to migrate. 
+
+ The last part specifies the code that we use to ssh into our global machine.
+
+ Note: The GitBash will not like backslash so use forward slash. 
+
+ After we will have to connect to our global machine
+ using the command provided on AWS
+
+ ```
+ssh -i "devops-tech201.pem" ubuntu@ec2-3-248-196-21.eu-west-1.compute.amazonaws.com
+```
+
+Then we need to make sure we navigate into the app folder `cd app` and use `ls` to check if we have the provision file in there and run `sudo apt install npm`
+
+We can check that the app is working on the browser with the port. 
 
 
+To implement the reverse proxy we will have to change the default configuration of nginx file 
+
+```
+sudo nano /etc/nginx/sites-available/default
+```
+
+The configuration that we need in this case with port 3000 is as follows:
+
+```
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
 
 
+        index index.html index.htm index.nginx-debian.html;
 
+        server_name _;
+
+        location / {
+                proxy_pass http://localhost:3000;
+        }
+
+}
+
+```
+
+After that we will need to run a few commands:
+
+`sudo nginx -t`
+`sudo systemctl restart nginx`
+
+And lastly we run our app : `node app.js`
 
 
 
