@@ -204,7 +204,8 @@ Then we follow with the path of the folder we want to migrate.
 ssh -i "devops-tech201.pem" ubuntu@ec2-3-248-196-21.eu-west-1.compute.amazonaws.com
 ```
 
-Then we need to make sure we navigate into the app folder `cd app` and use `ls` to check if we have the provision file in there and run `sudo apt install npm`
+- Then we need to make sure we navigate into the app folder `cd app` and use `ls` to check if we have the provision file in there and run `sudo apt install npm`
+- We also need to run the app using `node app.js`
 
 We can check that the app is working on the browser with the port. 
 
