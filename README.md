@@ -62,11 +62,10 @@ Also known as an internal cloud or corporate cloud, is a cloud computing environ
 2. **Public cloud**: A public cloud is defined as computing services offered by third-party provides over the public internet, making them available to anyone who wants to use or purchase them. 
 They may be free or sold on-demand, allowing customers to pay only per usage for the CPU cycles, storage, or bandwidth they consume.
 
+---
 
-
-
-
-
+3. **Hybrid cloud**: A hybrid cloud could combine a public cloud and a private cloud running on-premises or on the edge. It could also combine a public cloud with another public cloud.
+Hybrid models are meant to allow an organization to mix and match environments and to choose what works best for the specific applications and data.
 
 
 
@@ -394,8 +393,20 @@ If the reverse proxy is set up we will not need the port number, otherwise we wi
 
 ![](posts.png)
 
+---
 
+# AMI
 
+![](AMI_diagram.png)
 
+AMI stands for ***Amazon Machine Imagine*** and this allows us to save the state and settings of an instance and if we wish to restart this instance, it brings it back in the same state.
+
+Essentially lets us come back to the image of an instance we saved previously. 
+
+You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you require multiple instance with the same configuration.
+
+### Note
+
+The important thing is to ensure that the name and the description is as specific as possible to be able to recognize what image serves what purpose. 
 
 
