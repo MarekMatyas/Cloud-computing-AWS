@@ -352,6 +352,8 @@ We `ssh` into out db machine using the code in the example section after connect
 
 - When we are in the correct folder we have to make sure that the script is correct `sudo nano provision.sh` and comment out the configuration for mongod for it not to be automatically configured.
 
+To change premissions `sudo chmod +x provision.sh`
+
 `sudo ./provision.sh` to run the file.
 
 We change permissions of the file `chmod 700 provision.sh`
@@ -397,7 +399,8 @@ If the reverse proxy is set up we will not need the port number, otherwise we wi
 
 # AMI
 
-![](AMI_diagram.png)
+
+---
 
 AMI stands for ***Amazon Machine Imagine*** and this allows us to save the state and settings of an instance and if we wish to restart this instance, it brings it back in the same state.
 
@@ -409,6 +412,60 @@ Using **AMI** helps us to save on the overal costs. Even though the instance cou
 
 ### Note
 
-The important thing is to ensure that the name and the description is as specific as possible to be able to recognize what image serves what purpose. 
+The important thing is to ensure that the name and the description is as specific as possible to be able to recognize what image serves what purpose.
+
+
+To create AMI we have to select the instance we want to make the copy of and click on the "Actions" dropdown button.
+
+Select "Image and templates" and "Create image"
+
+Make sure to specify the ports. 
+
+---
+
+## **Setting up AMI's images for both instances (app, database)**
+
+To create an AMI from a running instance we toggle the desired instance and click on `Actions`. From there, there will be a dropdown option window, we select `Images and templates` and `Create an image`.
+
+Ensure to input the appropriate image name and description with the ports that the image should be working on. 
+
+Lastly `Create image`.
+
+Then in section on the left click on `AMI's`.
+
+Find the appropriate image and `Launch instance from AMI`
+
+Use the appropriate naming convention in our case `name-group-db-ami` and enter your key.
+
+From there select the existing security group for the previous db sg and `Launch instance`
+
+When we have both images running we move onto GitBash terminals.
+
+We need to make sure that the db image is configured in a correct way:
+`sudo nano /etc/mongod.conf`
+- Port: 27017
+- bindIP: 0.0.0.0 (Remember this is not the best practice in the production environment for the security purposes)
+
+- `sudo systemctl restart mongod`
+- `sudo systemctl enable mongod`
+- `sudo systemctl status mongod`
+
+
+Then we move onto our app instance and make sure we have all the provisioning installed after we `ssh` into our instance.
+
+- `nginx -v`
+- `node -v`
+
+We need to make sure that we have environment variable created to establish the connection between the 2 instances containing the DB IP, port and posts.
+
+- `npm install`
+- `node seeds/seed.js` to populate the app with posts
+- `node app.js` to run the app 
+
+![](app_r.png)
+
+![](posts_r.png)
+
+![](AMI.png)
 
 
