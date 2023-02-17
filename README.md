@@ -336,10 +336,10 @@ Security rule 1.:
 - Source type: My IP
 
 Security rule 2.:
-Type: Custom TCP, Port range: 27017
-Source type: Anywhere
+- Type: Custom TCP, Port range: 27017
+- Source type: Anywhere
 
-After we create an instance we to out GitBash terminal and make sure we are in the .ssh folder. 
+After we create an instance we go to our GitBash terminal and make sure we are in the .ssh folder. 
 
 We `ssh` into out db machine using the code in the example section after connect to the instance on AWS. 
 
@@ -366,13 +366,7 @@ We check the status `sudo systemctl status mongod`
 
 ![](mongo_status.png)
 
-
-changed mongod.conf using `cd /etc` and change bindIP to 0.0.0.0 to be public
-
-restart and enable mongod.
-
-
-We will have to change the configuration of the `mongod.conf` but first we need to use `cd /etc` following with `sudo nano mongod.conf` and change the bindIP to `0.0.0.0` for it to be public and make sure the port is correct too. This is not a good practice for production environment. 
+We will have to change the configuration of the `mongod.conf` but first we need to use `cd /etc` following with `sudo nano mongod.conf` and change the bindIP to `0.0.0.0` for it to be public and make sure the port is correct too. Using 0.0.0.0 as IP is not a good practice for production environment as it is not secure. 
 
 To check the changes `cat mongod.conf` and check the status `sudo systemctl status mongod`
 
