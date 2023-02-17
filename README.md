@@ -405,6 +405,8 @@ Essentially lets us come back to the image of an instance we saved previously.
 
 You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you require multiple instance with the same configuration.
 
+Using **AMI** helps us to save on the overal costs. Even though the instance could be in passive state, there is certain cost that runs behind the scenes and **AMI** helps us to mitigate these costs.
+
 ### Note
 
 The important thing is to ensure that the name and the description is as specific as possible to be able to recognize what image serves what purpose. 
