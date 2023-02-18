@@ -469,3 +469,32 @@ We need to make sure that we have environment variable created to establish the 
 ![](AMI.png)
 
 
+--- 
+
+## Monitoring and alert management SNS
+
+[Guide on CPU usage alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_AlarmAtThresholdEC2.html)
+
+To create CPU usage alarm:
+
+
+- Navigate to the Cloudwatch console [CloudWatch Console](https://console.aws.amazon.com/cloudwatch/)
+- Choose Alarms, All Alarms
+- Create Alarm
+- Select metric
+- In All metrics, select EC2 metrics
+- Choose metric category
+- Find the instance that is to be listed in the Istanceld column and CPUUtilization in the Metric name column, check box and Select metric
+- Under Specify metric and conditions, for Statistic choose Average and specify a custom percentile (example: p95.45)
+
+
+Under conditions:
+
+
+- Treshold type: Static
+- Whenever CPUUtilization: Greater than, and specify the treshold to trigger the alarm (example 70)
+- Missing data treatment: Choose have to have the alarm behave when data are missing (example:treat missing data as good)
+- 
+
+
+
