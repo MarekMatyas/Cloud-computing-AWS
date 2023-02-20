@@ -488,7 +488,7 @@ To create CPU usage alarm:
 - Under Specify metric and conditions, for Statistic choose Average and specify a custom percentile (example: p95.45)
 
 
-Under conditions:
+ Under conditions:
 
 
 - Treshold type: Static
