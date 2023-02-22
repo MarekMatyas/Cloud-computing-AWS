@@ -88,3 +88,104 @@ CIDR blocks allow for the creation of subnets with varying numbers of IP address
  ## Route tables
 
  A route table is a set of rules that determines how traffic is routed between a private network (such as a VPC) and other networks, such as the internet. The route table contains a list of destination IP addresses and the target for each route. By managing the rules in the route table, network administrators can control how traffic flows in and out of the VPC and between subnets within the VPC.
+
+
+
+ # Creating VPC, IG(Internet Gateway), Subnet, RT(Route Table), 
+
+ ![](steps.png)
+
+
+ First we need to navigate into the VPC section on AWS by using the search bar at the top of the page.
+
+ We click on **"Create VPC"**. 
+
+ ![](vpc-only.png)
+
+ In the picture above we can specify if we would like to create VPC only with our own configuration(VPC only).
+
+ Use appropriate naming convention "marek-tech201-vpc".
+
+ **"IPv4 CIDR"** in our case we choose "10.0.0.0/16". "Tenancy" we leave as default, and "Create VPC".
+
+
+ Then we move onto **"Internet Gateway"** on the left of the page if creating VPC was succesful and **"Create Internet Gateway"**.
+
+
+ Use appropriate naming convention "marek_devops_IG-tech201" and click on "Create Internet Gateway". So far this IG does not have access to the VPC we just created so we need to attach it to the VPC (Actions dropdown option).
+
+ ![](attach.png)
+
+
+ Select appropriate VPC(marek0tech-vpc) and click "Attach Internet Gateway". Next we need to allow internet access. To do that we go back to "Internet Gateway" section and find our IG. 
+
+ To achieve that we need to create a **Subnet**
+
+Navigate to the Subnet section on the left-hand side of the page and click on "Create Subnet".
+
+Choose appropriate VPC(marek-tech201-vpc)
+
+![](settings.png)
+
+Choose appropriate name for the subnet("marek-tech201-public-SN")
+
+- Availability Zones: No preference
+
+- IPv4 CIDR block: 10.0.1.0/20 (These need to be unique to us, otherwise it wont allow to go further)
+
+**"Create Subnet"**
+
+
+Next we need to create **RT(Route Table)** for the guidance between these services.
+
+
+Navigate onto the "Route Table" section on the left-hand side and "Create Route Table".
+
+Use appropriate naming convention "marek-tech201-public-RT-access" and select the correct VPC and **"Create route table"**.
+
+
+Next we need to make sure we configure correct Subnet associations and **"Edit subnet associations"**.
+
+![](assoc.png)
+
+Select our subnet and Save it. 
+
+Then we move onto **"Edit routes"** because there is no traffic and **"Add route"**.
+
+
+- Destination: 0.0.0.0/0
+
+- Internet gateway
+
+**"Save changes"**
+
+
+**NOTE**:
+
+If we would like to launch a new instance with this VPC we need to set the configuration in the **Network settings**.
+
+
+# Creatig a private subnet for DB
+
+1. Create a private subnet for our DB(database)
+
+2. Associate the subnet with the VPC
+
+3. Create RT(Route Table)
+
+4. Add rules to communicate with the APP subnet. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
