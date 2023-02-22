@@ -1,6 +1,6 @@
 
 
-# VPC (Virtual Private network)
+# VPC (Virtual Private Cloud)
 
 VPC is a concept in cloud computing that enables users to create a private virtual network within a public cloud environment.
 
