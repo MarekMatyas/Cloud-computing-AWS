@@ -194,6 +194,7 @@ Once we have the public subnet and route table for our app that would allow traf
 - Use the appropriate naming convention
 - Use the same name for the description
 - Next we need to select our own VPC we created previously
+
 **Rules**:
 - Allow port 22(My IP), port 80(Anywhere), and port 3000(Anywhere)
 - Enable "Auto-assing public IP"
