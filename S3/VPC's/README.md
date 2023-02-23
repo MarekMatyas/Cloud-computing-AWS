@@ -205,7 +205,7 @@ After the instance has been launched we can check the functionality by entering 
 ![](app.png)
 
 
-## **Now we can move onto our DB instance.**
+## **Now we can move onto the private subnet with DB instance.**
 
 We need to create a private subnet.
 
