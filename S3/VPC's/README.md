@@ -298,6 +298,7 @@ Once we have done that we can run the following commands again:
 
 If the app is ready and listening on port 3000, we can check the functionality in the browser by copying the public IP of our app instance and pasting it into the browser search bar. 
 
+![](posts.png)
 
 
 
