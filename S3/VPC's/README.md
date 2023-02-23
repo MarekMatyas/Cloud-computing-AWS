@@ -37,16 +37,31 @@ It provides users with greater control over their resources and an added layer o
 
 ## Benefits of VPC in DevOps
 
-1. Security and compliance: private network environment for more secure and compliant deployments
+1. Security and compliance: Private network environment for more secure and compliant deployments
 
-2. Scalability: easy to scale infrastructure up or down based on demand
+2. Scalability: Easy to scale infrastructure up or down based on demand
 
-3. Automation: can automate infrastructure provisioning, configuration management, and deployment
+3. Automation: Can automate infrastructure provisioning, configuration management, and deployment
 
-4. Isolation: allows for separate management and troubleshooting of 
+4. Isolation: Allows for separate management and troubleshooting 
 
-5. Collaboration: provides a centralized and secure network environment for improved collaboration and productivity.
+5. Collaboration: Provides a centralized and secure network environment for improved collaboration and productivity.
 
+
+## VPC in AWS
+
+AWS introduced the VPC to provide users with greater control over their network configuration and security settings when deploying resources in the cloud.
+
+
+### In the past
+
+Prior to the introduction, AWS users were required to deploy resources in a shared, public network. It presented a security challenges as users were unable to control access to their resources beyond  the use of firewall rules.
+
+
+### Present
+
+With the introduction of VPC, users were given the ability to create their own priate, isolater network environment within AWS, complete with customized IP address ranges, subnets, routing tables and Internet Gateways. 
+This allowed users to exercise greater control over the security of their resources and data, and to create more complex network topologies ot meet their specific needs. 
 
 
 # Subnets
