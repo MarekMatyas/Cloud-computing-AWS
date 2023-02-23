@@ -64,6 +64,10 @@ With the introduction of VPC, users were given the ability to create their own p
 This allowed users to exercise greater control over the security of their resources and data, and to create more complex network topologies ot meet their specific needs. 
 
 
+ACL:
+
+Difference between ACL(Access control list) and SG(Security Group) is that the ACL adds another layer of security and checks the Inbound and Outbound rules
+
 # Subnets
 
 
