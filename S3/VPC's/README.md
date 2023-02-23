@@ -165,7 +165,7 @@ Then we move onto **"Edit routes"** because there is no traffic and **"Add route
 If we would like to launch a new instance with this VPC we need to set the configuration in the **Network settings**.
 
 
-# Creatig 2tier architecture VPC
+# Creating 2tier architecture VPC
 
 
 First we need to deploy our APP instance and check the functionality.
