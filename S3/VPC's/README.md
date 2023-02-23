@@ -79,7 +79,7 @@ CIDR blocks allow for the creation of subnets with varying numbers of IP address
 
  # Internet Gateway
 
- An Internet Gateway is a service provided by cloud computing provides, whcih allows resources within a private network such as Virtual Private Cloud(VPC), to access public internet.
+ An Internet Gateway is a service provided by cloud computing providers, which allows resources within a private network such as Virtual Private Cloud(VPC), to access public internet.
 
  When an instance in a private subnet needs access to the internet, it sends its traffic  to the internet gateway, which then routes the traffic to its destination. 
 
@@ -165,16 +165,123 @@ Then we move onto **"Edit routes"** because there is no traffic and **"Add route
 If we would like to launch a new instance with this VPC we need to set the configuration in the **Network settings**.
 
 
-# Creatig a private subnet for DB
+# Creatig 2tier architecture VPC
 
-1. Create a private subnet for our DB(database)
 
-2. Associate the subnet with the VPC
+First we need to deploy our APP instance and check the functionality.
 
-3. Create RT(Route Table)
+Once we have the public subnet and route table for our app that would allow traffic from the internet, we will need to create a new security group.
 
-4. Add rules to communicate with the APP subnet. 
+**Create a new security group for the app instance**
 
+- `Security group`
+- `Create a security group`
+- Use the appropriate naming convention
+- Use the same name for the description
+- Next we need to select our own VPC we created previously
+**Rules**:
+- Allow port 22(My IP), port 80(Anywhere), and port 3000(Anywhere)
+- Enable "Auto-assing public IP"
+
+
+Next we need to create new EC2 instance from our app AMI(Amazon Machine Image)
+
+- `EC2 Dashboard`
+- `Launch Instance`
+- Appropriate naming convention
+- Select the desired AMI
+- Select the appropriate key pair
+
+**Network settings**
+
+- `Edit`
+- Select your own VPC
+- Select the public subnet we created previously
+- Select Security group that we just created
+- Lastly `Create instance`
+
+After the instance has been launched we can check the functionality by entering the Public IPv4 IP address into our browser.
+
+![](app.png)
+
+
+## **Now we can move onto our DB instance.**
+
+We need to create a private subnet.
+
+We follow the same steps as before: `Subnets`-`Create subnet`-`Choose your VPC`- `Appropriate naming convention`
+
+With the IPv4 CIDr block we need to make sure we use the one that is available and is not in use. 
+
+`Create Subnet`
+
+
+**Creating a Route Table**
+
+`VPC dashboard`- `Route tables`- `Create route table`
+Select your own VPC from the list.
+Lastly, we click on `Create route table`
+
+Inside the Route table window, we need to configure a few things.
+
+**Subnet association**: `Edit subnet association`= Private subnet we just created
+
+**Routes**: This route should only communicate with our app instance, not being internet-facing. It should only allow local access.
+
+We will need to create a new security group.
+
+- `VPC Dashboard`
+- `Security groups`
+- `Create security group`
+- Name and description should be the same and unique
+- Select your VPC from the list
+
+**Inbound rules**: 
+
+- Allow port 22(My IP)
+- Port 27017(Anywhere)
+
+`Create security group`
+
+
+**Now we can create an EC2 instance from our DB AMI**
+
+Important thing is to **Disable** the Auto-assing public IP.
+
+
+Once we have launched both instances, we will have to connect to our app instance using GitBash terminal to establish a connection between these 2 instances.
+We can achieve this by creating an **Environment variable** with the private IP from the DB and the port(27017).
+
+```
+export DB_HOST=mongodb://private_IP_of_DB:27017/posts
+
+printenv DB_HOST # This commands prints out the variable if it has been succesfully created
+
+cd app
+
+npm install
+
+node seeds/seed.js # This command populates our app with data
+
+node app.js # To run the app
+
+```
+
+### **Note**
+
+If you encounter an error specifying that the port 3000 is in use already, this means that when we launched the app instance from our AMI there was certain configuration in place already. In our user data section we used script `nohup` that would run our app in the background as soon as it launches.
+
+To resolve this we will need to kill that process first using  `sudo lsof -i :3000`. This command shows us the processes that use the 3000 port.
+
+To kill the process we use `sudo kill -9 PID of the process that is using the port 3000`
+
+Once we have done that we can run the following commands again:
+
+- `npm install`
+- `node seeds/seed.js`
+- `node app.js`
+
+If the app is ready and listening on port 3000, we can check the functionality in the browser by copying the public IP of our app instance and pasting it into the browser search bar. 
 
 
 
