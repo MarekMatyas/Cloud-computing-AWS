@@ -7,7 +7,7 @@ VPC is a concept in cloud computing that enables users to create a private virtu
 It provides users with greater control over their resources and an added layer of security.
 
 
-![](VPC.jpeg)
+![](pictures/VPC.jpeg)
 
 ### Main Benefits of VPC's
 
@@ -64,9 +64,6 @@ With the introduction of VPC, users were given the ability to create their own p
 This allowed users to exercise greater control over the security of their resources and data, and to create more complex network topologies ot meet their specific needs. 
 
 
-ACL:
-
-Difference between ACL(Access control list) and SG(Security Group) is that the ACL adds another layer of security and checks the Inbound and Outbound rules
 
 # Subnets
 
@@ -112,14 +109,14 @@ CIDR blocks allow for the creation of subnets with varying numbers of IP address
 
  # Creating VPC, IG(Internet Gateway), Subnet, RT(Route Table), 
 
- ![](steps.png)
+ ![](pictures/steps.png)
 
 
  First we need to navigate into the VPC section on AWS by using the search bar at the top of the page.
 
  We click on **"Create VPC"**. 
 
- ![](vpc-only.png)
+ ![](pictures/vpc-only.png)
 
  In the picture above we can specify if we would like to create VPC only with our own configuration(VPC only).
 
@@ -133,7 +130,7 @@ CIDR blocks allow for the creation of subnets with varying numbers of IP address
 
  Use appropriate naming convention "marek_devops_IG-tech201" and click on "Create Internet Gateway". So far this IG does not have access to the VPC we just created so we need to attach it to the VPC (Actions dropdown option).
 
- ![](attach.png)
+ ![](pictures/attach.png)
 
 
  Select appropriate VPC(marek0tech-vpc) and click "Attach Internet Gateway". Next we need to allow internet access. To do that we go back to "Internet Gateway" section and find our IG. 
@@ -144,7 +141,7 @@ Navigate to the Subnet section on the left-hand side of the page and click on "C
 
 Choose appropriate VPC(marek-tech201-vpc)
 
-![](settings.png)
+![](pictures/settings.png)
 
 Choose appropriate name for the subnet("marek-tech201-public-SN")
 
@@ -165,7 +162,7 @@ Use appropriate naming convention "marek-tech201-public-RT-access" and select th
 
 Next we need to make sure we configure correct Subnet associations and **"Edit subnet associations"**.
 
-![](assoc.png)
+![](pictures/assoc.png)
 
 Select our subnet and Save it. 
 
@@ -222,7 +219,7 @@ Next we need to create new EC2 instance from our app AMI(Amazon Machine Image)
 
 After the instance has been launched we can check the functionality by entering the Public IPv4 IP address into our browser.
 
-![](app.png)
+![](pictures/app.png)
 
 
 ## **Now we can move onto the private subnet with DB instance.**
@@ -303,7 +300,7 @@ Once we have done that we can run the following commands again:
 
 If the app is ready and listening on port 3000, we can check the functionality in the browser by copying the public IP of our app instance and pasting it into the browser search bar. 
 
-![](posts.png)
+![](pictures/posts.png)
 
 
 

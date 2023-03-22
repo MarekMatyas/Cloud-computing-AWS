@@ -39,7 +39,7 @@ IaaS providers:
 - Google Compute Engine
 - OpenStack
 
-![](cloud.jpg)
+![](pictures/cloud.jpg)
 
 Formerly, SaaS, PaaS and IaaS were the three main models of cloud computing, and essentially all cloud services fit into one of these categories. However, in recent years a fourth model has emerged:
 
@@ -77,7 +77,7 @@ Hybrid models are meant to allow an organization to mix and match environments a
 # How to set up tier2 architecture
 
 
-![](2tier_architecture.png)
+![](pictures/2tier_architecture.png)
 
 First we need to create .ssh folder 
 
@@ -256,7 +256,7 @@ And lastly we run our app : `node app.js`
 
 ## Creating a 2tier architecture
 
-![](diagram.jpg)
+![](pictures/diagram.jpg)
 
 
 In this architecture we can see that the environments are independent and in case we encounter a problem there will be no downtime of the services. If problem occurs the user should never be affected and should be redirected to a page that contains information such as: **Apologies for the incovenience, the site will be up again shortly** 
@@ -315,10 +315,10 @@ Env var set up
 
 
 
-## Creating 2nd 2tier instance (database)
+## Creating 2nd instance (database)
 
 
-![](2tier_diagram.png)
+![](pictures/2tier_diagram.png)
 
 First we need to create an instance on AWS website with the appropriate name in our case ending with "db" for database. 
 
@@ -365,7 +365,7 @@ This way, the other users will see the etc directory, but will not be able to ch
 
 We check the status `sudo systemctl status mongod`
 
-![](mongo_status.png)
+![](pictures/mongo_status.png)
 
 We will have to change the configuration of the `mongod.conf` but first we need to use `cd /etc` following with `sudo nano mongod.conf` and change the bindIP to `0.0.0.0` for it to be public and make sure the port is correct too. Using 0.0.0.0 as IP is not a good practice for production environment as it is not secure. 
 
@@ -393,7 +393,7 @@ Lastly, we run `npm start` again and our app should be ready and listening on th
 
 If the reverse proxy is set up we will not need the port number, otherwise we will need to specify the port. 
 
-![](posts.png)
+![](pictures/posts.png)
 
 ---
 
@@ -462,11 +462,11 @@ We need to make sure that we have environment variable created to establish the 
 - `node seeds/seed.js` to populate the app with posts
 - `node app.js` to run the app 
 
-![](app_r.png)
+![](pictures/app_r.png)
 
-![](posts_r.png)
+![](pictures/posts_r.png)
 
-![](AMI.png)
+![](pictures/AMI.png)
 
 
 --- 

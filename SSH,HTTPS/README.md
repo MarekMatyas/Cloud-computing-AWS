@@ -2,7 +2,7 @@
 
 
 
-![](SSH%2CHTTPS.png)
+![](pictures/SSH%2CHTTPS.png)
 
 Step 1.:
 
@@ -76,7 +76,7 @@ Now we can push all the changes made using SSH.
 
 If we are unable to push the changes and recieve this error:
 
-![](error.png)
+![](pictures/error.png)
 
 This could mean that we have used two GitBash terminals and they do not have the same configuration. To resolve that you could use the initial terminal, navigate to the directory with your README.md and attempt to push the changes from there. 
 
